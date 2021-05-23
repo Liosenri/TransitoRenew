@@ -1,0 +1,9 @@
+export {default as CarForm} from './CarForm';
+export {default as DriverForm} from './DriverForm';
+export {default as WarrantyObservationsForm} from './WarrantyObservationsForm';
+export {default as InfractionLocationForm} from './InfractionLocationForm';
+export {default as TrafficRegulations} from './TrafficRegulations';
+export {default as GeneralDetails} from './GeneralDetails';
+export {default as LocationDetails} from './LocationDetails';
+export {default as CarDetails} from './CarDetails';
+export {default as Driverdetails} from './Driverdetails';
