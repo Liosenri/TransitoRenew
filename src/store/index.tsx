@@ -6,6 +6,8 @@ import DeviceLocationReducer from '@/store/DeviceLocation/DeviceLocationReducer'
 import AuthReducer from '@/store/Auth/AuthReducer';
 import InfractionsReducer from '@/store/Infractions/InfractionsReducer';
 import InfractionDetailsReducer from '@/store/InfractionDetails/InfractionDetailsReducer';
+import BTDevicesReducer from '@/store/BTDevices/BTDevicesReducer';
+import PrinterReducer from '@/store/Printer/PrinterReducer';
 
 export const rootReducer = combineReducers({
   InfractionFormReducer,
@@ -14,6 +16,8 @@ export const rootReducer = combineReducers({
   AuthReducer,
   InfractionsReducer,
   InfractionDetailsReducer,
+  BTDevicesReducer,
+  PrinterReducer,
 });
 
 export type StoreStateType = ReturnType<typeof rootReducer>;

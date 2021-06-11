@@ -1,3 +1,4 @@
+import {RESET_FORM} from '../InfractionForm/InfractionFormActionTypes';
 import {
   REVERSE_GEOCODE_COORDINATE,
   REVERSE_GEOCODE_COORDINATE_FAIL,
@@ -33,6 +34,8 @@ export default (
         reversingCoordinate: false,
         errorDescription: action.payload.errorDescription,
       };
+    case RESET_FORM:
+      return initialState;
     default:
       return state;
   }

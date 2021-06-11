@@ -1,4 +1,5 @@
 import {Region} from 'react-native-maps';
+import {ResetFormActionType} from '../InfractionForm/InfractionFormActionTypes';
 export interface DeviceLocationReducerStateType {
   region?: Region | null;
   reversingCoordinate: boolean;
@@ -30,4 +31,5 @@ interface UpdateRegionAndAddressActionType {
 export type DeviceLocationActionTypes =
   | ReverseGeocodeCoordinateActionType
   | ReverseGeocodeCoordinateFailActionType
-  | UpdateRegionAndAddressActionType;
+  | UpdateRegionAndAddressActionType
+  | ResetFormActionType;

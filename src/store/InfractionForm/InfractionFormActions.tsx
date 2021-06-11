@@ -5,6 +5,7 @@ import {
 } from '@/constants/types';
 import {
   InfractionFormActionTypes,
+  RESET_FORM,
   SET_CAR_FORM,
   SET_DRIVER_FORM,
   SET_WARRANTY_OBSERVATIONS_FORM,
@@ -29,4 +30,8 @@ export const setWarrantyObservationsFormAction = (
 ): InfractionFormActionTypes => ({
   type: SET_WARRANTY_OBSERVATIONS_FORM,
   payload,
+});
+
+export const resetFormAction = (): InfractionFormActionTypes => ({
+  type: RESET_FORM,
 });

@@ -1,17 +1,24 @@
 import React, {useEffect} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import {BACKGROUND_GRAY_COLOR, MARGIN_SIZE} from '@/constants';
-import {InfractionDetailsScreenRouteProp} from '@/navigation/types';
+import {
+  InfractionDetailsNavigationProp,
+  InfractionDetailsScreenRouteProp,
+} from '@/navigation/types';
 import {StoreStateType} from '@/store';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchInfractionDetailsAction} from '@/store/InfractionDetails/InfractionDetailsActions';
 import {
   CarDetails,
+  CraneDragDetails,
   Driverdetails,
   GeneralDetails,
   LocationDetails,
+  PaymentDetails,
+  TrafficRegulationsDetails,
 } from '@/containers';
-import {ScrollView} from 'react-native-gesture-handler';
+import {ErrorScreen, FloatingButton, LoadingScreen} from '@/components';
+import {useNavigation} from '@react-navigation/native';
 
 type Props = {
   route: InfractionDetailsScreenRouteProp;
@@ -23,6 +30,8 @@ const InfractionDetails = ({
     params: {folio},
   },
 }: Props) => {
+  const {navigate} = useNavigation<InfractionDetailsNavigationProp>();
+
   const {details, loading, errorDescription} = useSelector(
     ({InfractionDetailsReducer}: StoreStateType) => InfractionDetailsReducer,
   );
@@ -33,26 +42,61 @@ const InfractionDetails = ({
     dispatch(fetchInfractionDetailsAction(folio));
   }, [dispatch, folio]);
 
+  if (loading) {
+    return <LoadingScreen message="Cargando detalles" />;
+  }
+
+  if (errorDescription) {
+    return (
+      <ErrorScreen
+        buttonTitle="Reintentar"
+        error={errorDescription}
+        buttonAction={() => dispatch(fetchInfractionDetailsAction(folio))}
+      />
+    );
+  }
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View>
+      <ScrollView>
+        {details && (
+          <View style={styles.container}>
+            <GeneralDetails
+              aggravating={details.aggravating}
+              citicenObservations={details.citizenObservations}
+              level={details.levelTrafficTicket}
+              observations={details.observations}
+              warranty={details.warranty}
+            />
+            <LocationDetails
+              date={details.dateTrafficTicket}
+              address={details.placeTrafficTicket}
+            />
+            <CarDetails carDetails={details.carInfo} />
+            <Driverdetails driverDetails={details.driverInfo} />
+            <TrafficRegulationsDetails
+              regulations={details.trafficTicketDetailInfo}
+            />
+            <CraneDragDetails
+              company={details.craneDragCompany}
+              stockNumber={details.stockNumber}
+              craneDrag={details.craneDrag}
+            />
+            {details.ceroFilasResponse?.multa && (
+              <PaymentDetails paymentInfo={details.ceroFilasResponse.multa} />
+            )}
+          </View>
+        )}
+      </ScrollView>
       {details && (
-        <View>
-          <GeneralDetails
-            aggravating={details.aggravating}
-            citicenObservations={details.citizenObservations}
-            level={details.levelTrafficTicket}
-            observations={details.observations}
-            warranty={details.warranty}
-          />
-          <LocationDetails
-            date={details.dateTrafficTicket}
-            address={details.placeTrafficTicket}
-          />
-          <CarDetails carDetails={details.carInfo} />
-          <Driverdetails driverDetails={details.driverInfo} />
-        </View>
+        <FloatingButton
+          iconName="printer"
+          onPress={() =>
+            navigate('PrintInfraction', {infractionDetails: details})
+          }
+        />
       )}
-    </ScrollView>
+    </View>
   );
 };
 

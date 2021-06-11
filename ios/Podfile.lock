@@ -2,6 +2,8 @@ PODS:
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
+  - EscPos (0.9.0):
+    - React
   - FBLazyVector (0.64.0)
   - FBReactNativeSpec (0.64.0):
     - RCT-Folly (= 2020.01.13.00)
@@ -260,6 +262,8 @@ PODS:
     - React-Core
   - react-native-safe-area-context (3.2.0):
     - React-Core
+  - react-native-webview (11.6.2):
+    - React-Core
   - React-perflogger (0.64.0)
   - React-RCTActionSheet (0.64.0):
     - React-Core/RCTActionSheetHeaders (= 0.64.0)
@@ -373,6 +377,7 @@ PODS:
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - "EscPos (from `../node_modules/@leesiongchan/react-native-esc-pos`)"
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - Flipper (~> 0.75.1)
@@ -412,6 +417,7 @@ DEPENDENCIES:
   - react-native-location (from `../node_modules/react-native-location`)
   - react-native-maps (from `../node_modules/react-native-maps`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -452,6 +458,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  EscPos:
+    :path: "../node_modules/@leesiongchan/react-native-esc-pos"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   FBReactNativeSpec:
@@ -488,6 +496,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-maps"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -535,6 +545,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
+  EscPos: 46fb6c1ec685a907b8b03c88139e9ed19272bd6b
   FBLazyVector: 49cbe4b43e445b06bf29199b6ad2057649e4c8f5
   FBReactNativeSpec: aeb0886cdee317a276abeedd9b2d0c1bd64419fc
   Flipper: d3da1aa199aad94455ae725e9f3aa43f3ec17021
@@ -562,6 +573,7 @@ SPEC CHECKSUMS:
   react-native-location: 5a40ec1cc6abf2f6d94df979f98ec76c3a415681
   react-native-maps: 2d405b4e8cee0282e4c02bac434d81450dfea877
   react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
+  react-native-webview: 193d233c29eacce1f42ca2637dab7ba79c25a6de
   React-perflogger: 9c547d8f06b9bf00cb447f2b75e8d7f19b7e02af
   React-RCTActionSheet: 3080b6e12e0e1a5b313c8c0050699b5c794a1b11
   React-RCTAnimation: 3f96f21a497ae7dabf4d2f150ee43f906aaf516f

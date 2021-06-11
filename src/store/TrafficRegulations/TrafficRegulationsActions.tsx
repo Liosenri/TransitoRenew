@@ -1,7 +1,7 @@
 import {ArticleType} from '@/constants/types';
 import {Action} from 'redux';
 import {ThunkAction} from 'redux-thunk';
-import {fetchTrafficRegulationsService} from '@/api/TrafficRegulations';
+// import {fetchTrafficRegulationsService} from '@/api/TrafficRegulations';
 import {trafficRegulationsMock} from '@/utils/Mocks';
 import {StoreStateType} from '..';
 import {

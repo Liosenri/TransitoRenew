@@ -147,7 +147,7 @@ export interface CarInfoType {
 export interface CeroFilasResponseType {
   description: string;
   error: string;
-  multa: CeroFilasResponseMultaType;
+  multa?: CeroFilasResponseMultaType;
 }
 
 export interface CeroFilasResponseMultaType {
@@ -177,6 +177,14 @@ export interface PaymentInfoType {
   uuIdPayment: string | null;
 }
 
+export interface TrafficTicketDetailInfo {
+  article: string;
+  articleDescription: string;
+  articleId: string;
+  trafficTicketDetaiId: string;
+  trafficTicketId: string;
+}
+
 export interface InfractionDetailsType {
   aggravating: boolean;
   carInfo: CarInfoType;
@@ -197,7 +205,16 @@ export interface InfractionDetailsType {
   stockNumber: string | null;
   citizenObservations: string;
   trafficOfficerInfo: string | null;
-  trafficTicketDetailInfo: ArticleType[];
+  trafficTicketDetailInfo: TrafficTicketDetailInfo[] | null;
   uuIdTicket: string;
   warranty: number;
+}
+
+export interface CreateTicketResponseType {
+  error: boolean;
+  description: string;
+  dbGenericResponse: {
+    result: string;
+    folio: string;
+  };
 }

@@ -50,7 +50,7 @@ const DriverForm = ({onContinue}: Props) => {
       formState,
     );
 
-    if (invalidFields.length) {
+    if (!invalidFields.length) {
       dispatch(setDriverFormAction(formState));
       onContinue();
     } else {

@@ -1,3 +1,4 @@
+import {RESET_FORM} from '../InfractionForm/InfractionFormActionTypes';
 import {
   TrafficRegulationsReducerStateType,
   TrafficRegulationsActionTypes,
@@ -43,6 +44,11 @@ export default function trafficRegulationsReducer(
             item.clave === action.payload ? {...item, selected: false} : item,
           ),
         ],
+      };
+    case RESET_FORM:
+      return {
+        ...state,
+        articles: state.articles.map(item => ({...item, selected: false})),
       };
     default:
       return state;

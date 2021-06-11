@@ -7,13 +7,14 @@ import {
   MARGIN_SIZE,
   PRIMARY_COLOR,
   MEDIUM_MARGIN_SIZE,
+  BACKGROUNC_COLOR,
 } from '@/constants';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useDispatch} from 'react-redux';
 import {
   addSelectedTrafficRegulationAction,
   removeSelectedTrafficRegulationAction,
 } from '@/store/TrafficRegulations/TrafficRegulationsActions';
+import {Card} from '@/components';
 
 interface Props {
   regulation: ArticleType;
@@ -32,13 +33,13 @@ const TrafficRegulationItem = ({
     );
 
   return (
-    <TouchableOpacity
+    <Card
       onPress={updateSelectedArticlesList}
       style={[styles.container, selected ? styles.selected : undefined]}>
       <Text style={styles.key}>{clave}</Text>
       <Text style={styles.article}>{articulo}</Text>
       <Text style={styles.descripcion}>{descripcion}</Text>
-    </TouchableOpacity>
+    </Card>
   );
 };
 

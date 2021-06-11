@@ -1,4 +1,5 @@
 import {ArticleType} from '@/constants/types';
+import {ResetFormActionType} from '../InfractionForm/InfractionFormActionTypes';
 
 export const FETCH_TRAFFIC_REGULATIONS = 'FETCH_TRAFFIC_REGULATIONS';
 export const FETCH_TRAFFIC_REGULATIONS_SUCCESS =
@@ -45,4 +46,5 @@ export type TrafficRegulationsActionTypes =
   | FetchTrafficRegulationsSuccessActionType
   | FetchTrafficRegulationsFailActionType
   | RemoveSelectedTrafficRegulationActionType
-  | AddSelectedTrafficRegulationActionType;
+  | AddSelectedTrafficRegulationActionType
+  | ResetFormActionType;

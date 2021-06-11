@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
     padding: 8,
     fontSize: textSize.small.fontSize,
     borderRadius: 10,
+    backgroundColor: 'white',
   },
   textInputContainer: {
     borderRadius: 10,

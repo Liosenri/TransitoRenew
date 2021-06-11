@@ -9,6 +9,7 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchTrafficRegulations} from '@/store/TrafficRegulations/TrafficRegulationsActions';
 import {StoreStateType} from '@/store';
+import {createErrorAlert} from '../utils/Alerts';
 
 interface Props {
   onContinue: () => void;
@@ -28,8 +29,18 @@ const ArticlesList = ({onBack, onContinue}: Props) => {
     }
   }, [dispatch, articles]);
 
+  const handleOnContinueButtonPress = () => {
+    const selectedArticles = articles.filter(({selected}) => selected);
+    selectedArticles.length
+      ? onContinue()
+      : createErrorAlert(
+          'Error',
+          'Para continuar debe seleccionar al menos un artículo',
+        );
+  };
+
   if (loading) {
-    return <LoadingScreen message="Cargando Articulos" />;
+    return <LoadingScreen message="Cargando Artículos" />;
   }
 
   if (error) {
@@ -45,7 +56,10 @@ const ArticlesList = ({onBack, onContinue}: Props) => {
   return (
     <View style={styles.container}>
       <TrafficRegulationsList regulations={articles} />
-      <NextBackButtonsView onBack={onBack} onContinue={onContinue} />
+      <NextBackButtonsView
+        onBack={onBack}
+        onContinue={handleOnContinueButtonPress}
+      />
     </View>
   );
 };

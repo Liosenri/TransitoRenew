@@ -8,6 +8,7 @@ import {
   Switch,
 } from 'react-native';
 import {textSize} from '@/utils/styles';
+import { Card } from '@/components';
 
 interface Props {
   title: string;
@@ -18,10 +19,10 @@ interface Props {
 
 const OptionalInput = ({title, containerStyle, enabled, onChange}: Props) => {
   return (
-    <View style={[styles.container, containerStyle]}>
+    <Card style={[styles.container, containerStyle]}>
       <Text style={styles.label}>{title}</Text>
       <Switch value={enabled} onValueChange={onChange} />
-    </View>
+    </Card>
   );
 };
 

@@ -33,5 +33,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: textSize.large.fontSize,
   },
-  button: {padding: 16},
+  button: {padding: 8},
 });

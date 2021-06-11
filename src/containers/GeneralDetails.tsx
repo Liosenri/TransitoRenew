@@ -58,7 +58,7 @@ export default GeneralDetails;
 const styles = StyleSheet.create({
   text: {
     marginTop: MEDIUM_MARGIN_SIZE,
-    fontSize: textSize.xmini.fontSize,
+    fontSize: textSize.mini.fontSize,
     color: 'gray',
     fontStyle: 'italic',
   },

@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {BORDER_COLOR, MEDIUM_MARGIN_SIZE} from '@/constants';
 import {textSize} from '@/utils/styles';
+import {Card} from '@/components';
 
 interface Props {
   title: string;
@@ -27,7 +28,7 @@ const ExpandableView = ({
   onExpand,
 }: Props) => {
   return (
-    <View style={[styles.container, style]}>
+    <Card style={[style]}>
       <View style={styles.labelContainer}>
         <Text style={styles.label}>{title}</Text>
         <Switch
@@ -41,7 +42,7 @@ const ExpandableView = ({
         />
       </View>
       {expanded && children}
-    </View>
+    </Card>
   );
 };
 

@@ -7,6 +7,7 @@ import {
 export const SET_DRIVER_FORM = 'SET_DRIVER_FORM';
 export const SET_CAR_FORM = 'SET_CAR_FORM';
 export const SET_WARRANTY_OBSERVATIONS_FORM = 'SET_WARRANTY_OBSERVATIONS_FORM';
+export const RESET_FORM = 'RESET_FORM';
 
 export interface InfractionFormReducerStateType {
   driverForm: DriverFormType | null;
@@ -29,7 +30,12 @@ export interface SetWarrantyObservationsFormActionType {
   payload: WarrantyObservationsFormType;
 }
 
+export interface ResetFormActionType {
+  type: typeof RESET_FORM;
+}
+
 export type InfractionFormActionTypes =
   | SetDriverFormActionType
   | SetCarFormActionType
-  | SetWarrantyObservationsFormActionType;
+  | SetWarrantyObservationsFormActionType
+  | ResetFormActionType;

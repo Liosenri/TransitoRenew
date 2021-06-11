@@ -1,6 +1,9 @@
 import {normalize} from './ui';
 
 export const textSize = {
+  xxmini: {
+    fontSize: normalize(8),
+  },
   xmini: {
     fontSize: normalize(10),
   },

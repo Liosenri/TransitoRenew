@@ -50,7 +50,7 @@ const InfractionLocationForm = ({onBack, onContinue}: Props) => {
   }, [errorDescription]);
 
   const validateRegion = () =>
-    !region
+    region
       ? onContinue()
       : createErrorAlert(
           'Error',

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {FlatList, ListRenderItemInfo, StyleSheet, View} from 'react-native';
 import {CustomSearchBar, TrafficRegulationItem} from '@/components';
 import {ArticleType} from '@/constants/types';
+import {BACKGROUNC_COLOR} from '../constants';
 
 interface Props {
   regulations: ArticleType[];
@@ -54,5 +55,5 @@ const TrafficRegulationsList = ({regulations}: Props) => {
 export default TrafficRegulationsList;
 
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  container: {flex: 1, backgroundColor: BACKGROUNC_COLOR},
 });

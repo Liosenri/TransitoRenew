@@ -1,6 +1,7 @@
 import {
   InfractionFormActionTypes,
   InfractionFormReducerStateType,
+  RESET_FORM,
   SET_CAR_FORM,
   SET_DRIVER_FORM,
   SET_WARRANTY_OBSERVATIONS_FORM,
@@ -23,6 +24,8 @@ export default function infractionFormReducer(
       return {...state, carForm: action.payload};
     case SET_WARRANTY_OBSERVATIONS_FORM:
       return {...state, warrantyObservationsForm: action.payload};
+    case RESET_FORM:
+      return INITIAL_STATE;
     default:
       return state;
   }

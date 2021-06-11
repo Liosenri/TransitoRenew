@@ -24,7 +24,7 @@ export default DetailRow;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: textSize.xmini.fontSize,
+    fontSize: textSize.mini.fontSize,
     color: 'gray',
     fontStyle: 'italic',
   },

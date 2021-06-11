@@ -18,3 +18,5 @@ export {default as InfractionItem} from './InfractionItem';
 export {default as Card} from './Card';
 export {default as Separator} from './Separator';
 export {default as DetailRow} from './DetailRow';
+export {default as BTDevicesList} from './BTDevicesList';
+export {default as FloatingButton} from './FloatingButton';

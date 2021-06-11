@@ -12,9 +12,16 @@ import StaticInsets from 'react-native-static-safe-area-insets';
 interface Props {
   onContinue?: () => void;
   onBack?: () => void;
+  nextButtonTitle?: string;
+  nextButtonDisabled?: boolean;
 }
 
-const NextBackButtonsView = ({onContinue, onBack}: Props) => {
+const NextBackButtonsView = ({
+  onContinue,
+  onBack,
+  nextButtonTitle = 'Continuar',
+  nextButtonDisabled,
+}: Props) => {
   return (
     <View style={styles.container}>
       {onBack && (
@@ -28,8 +35,9 @@ const NextBackButtonsView = ({onContinue, onBack}: Props) => {
       {onContinue && (
         <CustomButton
           style={styles.continueButtonStyle}
-          title="Continuar"
+          title={nextButtonTitle}
           onPress={onContinue}
+          disabled={nextButtonDisabled}
         />
       )}
     </View>

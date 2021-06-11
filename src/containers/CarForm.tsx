@@ -57,7 +57,7 @@ const DriverForm = ({onContinue, onBack}: Props) => {
       formState,
     );
 
-    if (invalidFields.length) {
+    if (!invalidFields.length) {
       dispatch(setCarFormAction(formState));
       onContinue();
     } else {

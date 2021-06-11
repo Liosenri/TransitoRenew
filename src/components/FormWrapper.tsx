@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, ScrollView, StyleSheet} from 'react-native';
 import {NextBackButtonsView} from '@/components';
-import {MARGIN_SIZE, MEDIUM_MARGIN_SIZE} from '../constants';
+import {BACKGROUNC_COLOR, MARGIN_SIZE, MEDIUM_MARGIN_SIZE} from '../constants';
 
 interface Props {
   onContinue?: () => void;
@@ -23,7 +23,7 @@ const FormWrapper = ({onContinue, onBack, children}: Props) => {
 export default FormWrapper;
 
 const styles = StyleSheet.create({
-  container: {flex: 1},
+  container: {flex: 1, backgroundColor: BACKGROUNC_COLOR},
   scrollViewContainer: {
     paddingHorizontal: MARGIN_SIZE,
     paddingVertical: MEDIUM_MARGIN_SIZE,
