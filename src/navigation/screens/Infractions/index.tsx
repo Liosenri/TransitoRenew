@@ -1,11 +1,7 @@
 import React, {useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {
-  ErrorScreen,
-  FloatingButton,
-  InfractionsList,
-  LoadingScreen,
-} from '@/components';
+import {FloatingButton, LoadingScreen, ErrorScreen} from '@/components';
+import InfractionsList from './components/InfractionsList';
 import {StoreStateType} from '@/store';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchUserInfractionsAction} from '@/store/Infractions/InfractionsActions';

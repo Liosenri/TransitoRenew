@@ -7,7 +7,7 @@ import {
   WarrantyOptions,
 } from '@/constants/types';
 import {generateFormInput} from '@/utils/forms';
-import {WarrantyObservationsFormFields} from '../constants/forms';
+import {WarrantyObservationsFormFields} from '@/constants/forms';
 import {useDispatch, useSelector} from 'react-redux';
 import {StoreStateType} from '@/store';
 import {setWarrantyObservationsFormAction} from '@/store/InfractionForm/InfractionFormActions';

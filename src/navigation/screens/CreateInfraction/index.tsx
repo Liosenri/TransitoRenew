@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, LayoutAnimation} from 'react-native';
+import {TrafficRegulations} from '@/containers';
 import {
   CarForm,
-  DriverForm,
   WarrantyObservationsForm,
+  DriverForm,
+  SignatureForm,
   InfractionLocationForm,
-  TrafficRegulations,
-  SignInfraction,
-} from '@/containers';
+} from './forms';
 import {TicketCreationProgressBar} from '@/components';
 import {CreateInfractionNavigationProp} from '@/navigation/types';
 import {useNavigation} from '@react-navigation/native';
@@ -105,7 +105,7 @@ const CreateInfraction = ({}: Props) => {
         );
       case 5:
         return (
-          <SignInfraction
+          <SignatureForm
             onContinue={finishInfractionCreationFlow}
             onBack={decrementStepCounter}
           />

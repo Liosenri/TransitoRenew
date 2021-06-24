@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, ActivityIndicator} from 'react-native';
+import {SafeAreaView, StyleSheet, ActivityIndicator, Image} from 'react-native';
 import {MARGIN_SIZE, MEDIUM_MARGIN_SIZE, PRIMARY_COLOR} from '@/constants';
 import {CustomButton, CustomTextInput, ErrorText} from '@/components';
 import {useDispatch, useSelector} from 'react-redux';
@@ -33,6 +33,11 @@ const Login = ({}: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Image
+        style={styles.img}
+        source={require('@/assets/images/logo_ayuntamiento.png')}
+        resizeMode="contain"
+      />
       <CustomTextInput
         value={email}
         onChangeText={setEmail}
@@ -58,5 +63,6 @@ export default Login;
 
 const styles = StyleSheet.create({
   container: {flex: 1, margin: MARGIN_SIZE},
-  textInput: {marginBottom: MEDIUM_MARGIN_SIZE},
+  textInput: {marginVertical: MEDIUM_MARGIN_SIZE},
+  img: {height: 200, aspectRatio: 1, alignSelf: 'center'},
 });

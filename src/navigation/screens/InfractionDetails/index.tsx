@@ -16,7 +16,7 @@ import {
   LocationDetails,
   PaymentDetails,
   TrafficRegulationsDetails,
-} from '@/containers';
+} from './components';
 import {ErrorScreen, FloatingButton, LoadingScreen} from '@/components';
 import {useNavigation} from '@react-navigation/native';
 

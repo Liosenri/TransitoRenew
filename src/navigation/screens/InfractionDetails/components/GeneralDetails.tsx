@@ -3,9 +3,9 @@ import {Text, StyleSheet} from 'react-native';
 import {Card} from '@/components';
 import {StoreStateType} from '@/store';
 import {useSelector} from 'react-redux';
-import {MARGIN_SIZE, MEDIUM_MARGIN_SIZE} from '../constants';
-import {textSize} from '../utils/styles';
-import {WarrantyOptions} from '../constants/types';
+import {MARGIN_SIZE, MEDIUM_MARGIN_SIZE} from '@/constants';
+import {textSize} from '@/utils/styles';
+import {WarrantyOptions} from '@/constants/types';
 
 interface Props {
   level: string;

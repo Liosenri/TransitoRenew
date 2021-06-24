@@ -8,7 +8,7 @@ import _ from 'lodash';
 import {useDispatch, useSelector} from 'react-redux';
 import {StoreStateType} from '@/store';
 import {setDriverFormAction} from '@/store/InfractionForm/InfractionFormActions';
-import {createInvalidFormAlert} from '../utils/Alerts';
+import {createInvalidFormAlert} from '../../../../utils/Alerts';
 import {MEDIUM_MARGIN_SIZE} from '@/constants';
 
 interface Props {

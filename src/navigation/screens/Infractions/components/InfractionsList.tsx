@@ -1,7 +1,7 @@
 import React from 'react';
 import {FlatList, StyleSheet, ListRenderItemInfo} from 'react-native';
 import {InfractionType} from '@/constants/types';
-import {InfractionItem} from '@/components';
+import InfractionItem from './InfractionItem';
 import {MARGIN_SIZE} from '@/constants';
 
 interface Props {

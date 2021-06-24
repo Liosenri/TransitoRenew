@@ -13,8 +13,6 @@ export {default as LoadingScreen} from './LoadingScreen';
 export {default as ErrorScreen} from './ErrorScreen';
 export {default as OptionalInput} from './OptionalInput';
 export {default as ErrorText} from './ErrorText';
-export {default as InfractionsList} from './InfractionsList';
-export {default as InfractionItem} from './InfractionItem';
 export {default as Card} from './Card';
 export {default as Separator} from './Separator';
 export {default as DetailRow} from './DetailRow';

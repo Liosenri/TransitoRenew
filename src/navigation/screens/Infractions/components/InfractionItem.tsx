@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, StyleSheet, View} from 'react-native';
 import {InfractionType} from '@/constants/types';
 import {MARGIN_SIZE} from '@/constants';
-import {textSize} from '../utils/styles';
+import {textSize} from '@/utils/styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Card} from '@/components';
 import {useNavigation} from '@react-navigation/core';

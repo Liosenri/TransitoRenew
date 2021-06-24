@@ -18,7 +18,7 @@ interface Props {
   onContinue: (folio: string) => void;
 }
 
-const SignInfraction = ({onBack, onContinue}: Props) => {
+const SignatureForm = ({onBack, onContinue}: Props) => {
   const ref = useRef<SignatureViewRef | null>(null);
   const [signatureData, setSignatureData] = useState('');
 
@@ -105,7 +105,7 @@ const SignInfraction = ({onBack, onContinue}: Props) => {
   );
 };
 
-export default SignInfraction;
+export default SignatureForm;
 
 const styles = StyleSheet.create({
   container: {
