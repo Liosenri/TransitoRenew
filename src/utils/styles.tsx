@@ -1,25 +1,25 @@
-import {normalize} from './ui';
+import {scale} from './ui';
 
 export const textSize = {
   xxmini: {
-    fontSize: normalize(8),
+    fontSize: scale(8),
   },
   xmini: {
-    fontSize: normalize(10),
+    fontSize: scale(10),
   },
   mini: {
-    fontSize: normalize(12),
+    fontSize: scale(12),
   },
   small: {
-    fontSize: normalize(15),
+    fontSize: scale(15),
   },
   medium: {
-    fontSize: normalize(17),
+    fontSize: scale(17),
   },
   large: {
-    fontSize: normalize(20),
+    fontSize: scale(20),
   },
   xlarge: {
-    fontSize: normalize(24),
+    fontSize: scale(24),
   },
 };

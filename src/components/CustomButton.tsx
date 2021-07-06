@@ -1,30 +1,30 @@
 import React from 'react';
-import {
-  StyleProp,
-  Text,
-  TextStyle,
-  TouchableOpacity,
-  ViewStyle,
-  StyleSheet,
-} from 'react-native';
+import {StyleProp, TouchableOpacity, ViewStyle, StyleSheet} from 'react-native';
 import {PRIMARY_COLOR, MEDIUM_MARGIN_SIZE} from '@/constants';
-import {textSize} from '@/utils/styles';
+
+import CustomText from './CustomText';
 
 interface Props {
   onPress?: () => void;
   title: string;
   style?: StyleProp<ViewStyle>;
-  titleStyle?: StyleProp<TextStyle>;
   disabled?: boolean;
+  textColor?: string;
 }
 
-const index = ({onPress, title, style, titleStyle, disabled}: Props) => {
+const index = ({
+  onPress,
+  title,
+  style,
+  disabled,
+  textColor = 'white',
+}: Props) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[styles.container, style, disabled ? styles.disabled : undefined]}
       disabled={disabled}>
-      <Text style={[styles.title, titleStyle]}>{title}</Text>
+      <CustomText style={{color: textColor}} text={title} textType="bold" />
     </TouchableOpacity>
   );
 };
@@ -38,11 +38,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 5,
     padding: MEDIUM_MARGIN_SIZE,
-  },
-  title: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: textSize.small.fontSize,
   },
   disabled: {backgroundColor: 'gray'},
 });

@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, ActivityIndicator, StyleSheet} from 'react-native';
+import {View, ActivityIndicator, StyleSheet} from 'react-native';
 import {MARGIN_SIZE, PRIMARY_COLOR} from '@/constants';
-import {textSize} from '@/utils/styles';
+import CustomText from './CustomText';
 
 interface Props {
   message: string;
@@ -9,7 +9,12 @@ interface Props {
 
 const LoadingScreeen = ({message}: Props) => (
   <View style={styles.container}>
-    <Text style={styles.message}>{message}</Text>
+    <CustomText
+      textType="bold"
+      textSize="large"
+      style={styles.message}
+      text={message}
+    />
     <ActivityIndicator animating={true} color={PRIMARY_COLOR} size="large" />
   </View>
 );
@@ -20,8 +25,6 @@ const styles = StyleSheet.create({
   message: {
     color: 'gray',
     margin: MARGIN_SIZE,
-    fontWeight: 'bold',
-    fontSize: textSize.large.fontSize,
   },
   container: {
     flex: 1,

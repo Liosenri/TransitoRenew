@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import {textSize} from '@/utils/styles';
+import {StyleSheet, View} from 'react-native';
 import {CustomButton} from '@/components';
 import {MARGIN_SIZE} from '@/constants';
+import CustomText from './CustomText';
 
 interface Props {
   error: string | number;
@@ -13,7 +13,12 @@ interface Props {
 const ErrorScreen = ({error, buttonAction, buttonTitle}: Props) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.message}>{error}</Text>
+      <CustomText
+        textSize="large"
+        textType="bold"
+        style={styles.message}
+        text={error}
+      />
       <CustomButton
         style={styles.button}
         title={buttonTitle}
@@ -30,8 +35,6 @@ const styles = StyleSheet.create({
   message: {
     color: 'gray',
     margin: MARGIN_SIZE,
-    fontWeight: 'bold',
-    fontSize: textSize.large.fontSize,
   },
   button: {padding: 8},
 });

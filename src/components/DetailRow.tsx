@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {MEDIUM_MARGIN_SIZE} from '@/constants';
-import {textSize} from '@/utils/styles';
+import {CustomText} from '@/components/';
 
 interface Props {
   detail?: string;
@@ -14,8 +14,8 @@ const DetailRow = ({title, detail}: Props) => {
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{title}</Text>
-      <Text style={styles.text}>{detail}</Text>
+      <CustomText textSize="small" style={styles.text} text={title} />
+      <CustomText textSize="small" style={styles.text} text={detail} />
     </View>
   );
 };
@@ -24,9 +24,7 @@ export default DetailRow;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: textSize.mini.fontSize,
     color: 'gray',
-    fontStyle: 'italic',
   },
   container: {
     marginTop: MEDIUM_MARGIN_SIZE / 2,

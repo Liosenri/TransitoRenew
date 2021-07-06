@@ -1,15 +1,13 @@
-import {Dimensions, Platform, PixelRatio} from 'react-native';
+import {Dimensions} from 'react-native';
+const {width, height} = Dimensions.get('window');
 
-const {width: SCREEN_WIDTH} = Dimensions.get('window');
+//Guideline sizes are based on standard ~5" screen mobile device
+const guidelineBaseWidth = 350;
+const guidelineBaseHeight = 680;
 
-// based on iphone 5s's scale
-const scale = SCREEN_WIDTH / 320;
+const scale = (size: number) => (width / guidelineBaseWidth) * size;
+const verticalScale = (size: number) => (height / guidelineBaseHeight) * size;
+const moderateScale = (size: number, factor = 0.5) =>
+  size + (scale(size) - size) * factor;
 
-export function normalize(size: number): number {
-  const newSize = size * scale;
-  if (Platform.OS === 'ios') {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize));
-  } else {
-    return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
-  }
-}
+export {scale, verticalScale, moderateScale};

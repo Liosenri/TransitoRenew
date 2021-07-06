@@ -1,9 +1,7 @@
 import React from 'react';
-import {StyleProp, StyleSheet, ViewStyle, Text} from 'react-native';
+import {StyleProp, ViewStyle} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
-import {BORDER_COLOR, MEDIUM_MARGIN_SIZE} from '@/constants';
-import {textSize} from '@/utils/styles';
-import {Card} from '@/components';
+import {Card, CustomText} from '@/components';
 
 interface Props {
   options: {value: string; label: string}[];
@@ -22,7 +20,7 @@ const CustomPicker = ({
 }: Props) => {
   return (
     <Card style={[style]}>
-      <Text style={styles.label}>{title}</Text>
+      <CustomText textType="bold" text={title} />
       <Picker selectedValue={selectedValue} onValueChange={onChangeValue}>
         {options.map(({value, label}) => (
           <Picker.Item key={value} label={label} value={value} />
@@ -33,17 +31,3 @@ const CustomPicker = ({
 };
 
 export default CustomPicker;
-
-const styles = StyleSheet.create({
-  container: {
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-    borderColor: BORDER_COLOR,
-    borderRadius: 5,
-    paddingVertical: MEDIUM_MARGIN_SIZE,
-  },
-  label: {
-    fontSize: textSize.small.fontSize,
-    fontWeight: 'bold',
-  },
-});

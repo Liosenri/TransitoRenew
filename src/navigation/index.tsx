@@ -7,7 +7,7 @@ import {
   Infractions,
   Login,
   PrintInfraction,
-} from '@/navigation/screens';
+} from '@/containers';
 import {StoreStateType} from '@/store';
 import {useDispatch, useSelector} from 'react-redux';
 import {PRIMARY_COLOR} from '../constants';
@@ -30,6 +30,7 @@ const PostLoginStackNavigator = () => (
     screenOptions={{
       headerStyle: {backgroundColor: PRIMARY_COLOR},
       headerTintColor: 'white',
+      headerTitleStyle: {fontFamily: 'NeoSansPro-Regular'},
     }}>
     <PostLoginStack.Screen
       name="Infractions"

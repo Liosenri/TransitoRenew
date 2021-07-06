@@ -6,10 +6,10 @@ import {
   ViewStyle,
   TextStyle,
   StyleSheet,
-  Text,
 } from 'react-native';
 import {MEDIUM_MARGIN_SIZE, PRIMARY_COLOR} from '@/constants';
-import {textSize} from '@/utils/styles';
+import {scale} from '@/utils/ui';
+import {CustomText} from '@/components';
 
 interface Props {
   label?: string;
@@ -22,6 +22,8 @@ interface Props {
   onBlur?: () => void;
   multiline?: boolean;
   secureTextEntry?: boolean;
+  textType?: 'regular' | 'bold' | 'light';
+  textSize?: 'small' | 'medium' | 'large';
 }
 
 const CustomTextInput = ({
@@ -32,11 +34,14 @@ const CustomTextInput = ({
   style,
   textStyle,
   onBlur,
-  labelStyle,
   multiline,
   secureTextEntry,
+  textType = 'regular',
+  textSize = 'medium',
 }: Props) => {
   const [focused, setFocused] = useState(false);
+  let customStyle = {...styles[textType], ...styles[textSize]};
+  let focusedStyle = {borderColor: focused ? PRIMARY_COLOR : '#DDDDDD'};
 
   const hanldeOnBlur = () => {
     if (onBlur) {
@@ -51,17 +56,13 @@ const CustomTextInput = ({
 
   return (
     <View style={style}>
-      {label && <Text style={[styles.label, labelStyle]}>{label}</Text>}
-      <View
-        style={[
-          styles.textInputContainer,
-          {borderColor: focused ? PRIMARY_COLOR : '#DDDDDD'},
-        ]}>
+      {label && <CustomText style={styles.label} text={label} />}
+      <View style={[styles.textInputContainer, focusedStyle]}>
         <TextInput
           secureTextEntry={secureTextEntry}
           multiline={multiline}
           numberOfLines={multiline ? 2 : 1}
-          style={[styles.textInput, textStyle]}
+          style={[customStyle, styles.textInput, textStyle]}
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
@@ -78,17 +79,33 @@ export default CustomTextInput;
 const styles = StyleSheet.create({
   label: {
     marginBottom: MEDIUM_MARGIN_SIZE,
-    fontSize: textSize.small.fontSize,
-    // fontWeight:'300'
   },
   textInput: {
     padding: 8,
-    fontSize: textSize.small.fontSize,
+
     borderRadius: 10,
     backgroundColor: 'white',
   },
   textInputContainer: {
     borderRadius: 10,
     borderWidth: 2,
+  },
+  regular: {
+    fontFamily: 'NeoSansPro-Regular',
+  },
+  bold: {
+    fontFamily: 'NeoSansPro-Bold',
+  },
+  light: {
+    fontFamily: 'NeoSansPro-Light',
+  },
+  small: {
+    fontSize: scale(12),
+  },
+  medium: {
+    fontSize: scale(15),
+  },
+  large: {
+    fontSize: scale(17),
   },
 });

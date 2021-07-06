@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import {View, StyleSheet, TextInput} from 'react-native';
 import {MARGIN_SIZE, MEDIUM_MARGIN_SIZE, PRIMARY_COLOR} from '../constants';
 
 interface Props {
@@ -32,7 +31,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flex: 1,
     marginHorizontal: MARGIN_SIZE,
-    marginBottom: MARGIN_SIZE,
+    marginVertical: MEDIUM_MARGIN_SIZE,
     padding: MEDIUM_MARGIN_SIZE,
+    fontFamily: 'NeoSansPro-Regular',
   },
 });

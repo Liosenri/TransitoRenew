@@ -27,7 +27,7 @@ const NextBackButtonsView = ({
       {onBack && (
         <CustomButton
           style={styles.backButtonStyle}
-          titleStyle={styles.backButtonStyleTitleStyle}
+          textColor={PRIMARY_COLOR}
           title="Regresar"
           onPress={onBack}
         />

@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  TouchableOpacity,
-  StyleSheet,
-  StyleProp,
-  ViewStyle,
-  Text,
-} from 'react-native';
+import {TouchableOpacity, StyleSheet, StyleProp, ViewStyle} from 'react-native';
 import {MARGIN_SIZE} from '@/constants';
-import {textSize} from '@/utils/styles';
+import {CustomText} from '@/components';
 
 interface Props {
   children: React.ReactNode;
@@ -21,7 +15,7 @@ const Card = ({children, style, onPress, title}: Props) => (
     disabled={!onPress ? true : false}
     onPress={onPress}
     style={[styles.container, style]}>
-    {title && <Text style={styles.title}>{title}</Text>}
+    {title && <CustomText text={title} textType="bold" />}
     {children}
   </TouchableOpacity>
 );
@@ -34,5 +28,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: MARGIN_SIZE,
   },
-  title: {fontSize: textSize.small.fontSize, fontWeight: 'bold'},
 });

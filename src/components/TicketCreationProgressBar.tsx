@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, Text, StyleSheet, Platform} from 'react-native';
+import {View, StyleSheet, Platform} from 'react-native';
 import * as Progress from 'react-native-progress';
 import {MARGIN_SIZE, PRIMARY_COLOR, MEDIUM_MARGIN_SIZE} from '@/constants';
-import {textSize} from '@/utils/styles';
 import StaticInsets from 'react-native-static-safe-area-insets';
-import {normalize} from '@/utils/ui';
+import {scale} from '@/utils/ui';
+import {CustomText} from '@/components';
 
 interface Props {
-  titles: String[];
+  titles: string[];
   step: number;
   progress: number;
 }
@@ -26,10 +26,14 @@ const TicketCreationProgressBar = ({
 
   return (
     <View style={styles.container}>
-      <Progress.Pie progress={progress} size={normalize(60)} color="white" />
+      <Progress.Pie progress={progress} size={scale(50)} color="white" />
       <View style={styles.stepsContainer}>
-        <Text style={styles.currentStep}>{titles[step]}</Text>
-        <Text style={styles.nextStep}>{calculateNextStep()}</Text>
+        <CustomText
+          textSize="large"
+          text={titles[step]}
+          style={styles.currentStep}
+        />
+        <CustomText style={styles.nextStep} text={calculateNextStep()} />
       </View>
     </View>
   );
@@ -49,10 +53,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  nextStep: {fontSize: textSize.small.fontSize, color: 'white'},
+  nextStep: {color: 'white'},
   currentStep: {
-    fontWeight: 'bold',
-    fontSize: textSize.xlarge.fontSize,
     textAlign: 'right',
     color: 'white',
   },

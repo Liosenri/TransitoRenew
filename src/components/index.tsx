@@ -5,10 +5,8 @@ export {default as TicketCreationProgressBar} from './TicketCreationProgressBar'
 export {default as NextBackButtonsView} from './NextBackButtonsView';
 export {default as FormWrapper} from './FormWrapper';
 export {default as CustomPicker} from './CustomPicker';
-export {default as TrafficRegulationsList} from './TrafficRegulationsList';
 export {default as GooglePlacesSearchBar} from './GooglePlacesSearchBar';
 export {default as CustomSearchBar} from './CustomSearchBar';
-export {default as TrafficRegulationItem} from './TrafficRegulationItem';
 export {default as LoadingScreen} from './LoadingScreen';
 export {default as ErrorScreen} from './ErrorScreen';
 export {default as OptionalInput} from './OptionalInput';
@@ -16,5 +14,5 @@ export {default as ErrorText} from './ErrorText';
 export {default as Card} from './Card';
 export {default as Separator} from './Separator';
 export {default as DetailRow} from './DetailRow';
-export {default as BTDevicesList} from './BTDevicesList';
 export {default as FloatingButton} from './FloatingButton';
+export {default as CustomText} from './CustomText';

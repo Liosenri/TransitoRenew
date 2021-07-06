@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   Switch,
   StyleProp,
   ViewStyle,
@@ -9,8 +8,8 @@ import {
   LayoutAnimation,
 } from 'react-native';
 import {BORDER_COLOR, MEDIUM_MARGIN_SIZE} from '@/constants';
-import {textSize} from '@/utils/styles';
 import {Card} from '@/components';
+import CustomText from './CustomText';
 
 interface Props {
   title: string;
@@ -30,7 +29,7 @@ const ExpandableView = ({
   return (
     <Card style={[style]}>
       <View style={styles.labelContainer}>
-        <Text style={styles.label}>{title}</Text>
+        <CustomText textType="bold" text={title} />
         <Switch
           value={expanded}
           onValueChange={value => {
@@ -49,10 +48,6 @@ const ExpandableView = ({
 export default ExpandableView;
 
 const styles = StyleSheet.create({
-  label: {
-    fontSize: textSize.small.fontSize,
-    fontWeight: 'bold',
-  },
   labelContainer: {
     flexDirection: 'row',
     alignItems: 'center',

@@ -216,8 +216,8 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				4FEC1C870AEC474426F2F3C9 /* [CP] Embed Pods Frameworks */,
 				7117A77A8CB7ECFE70A7E78E /* [CP] Copy Pods Resources */,
+				5C016110FDA5E34F48DAA707 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,8 +239,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				1BBB4ED0358372F1A8DFC4B2 /* [CP] Embed Pods Frameworks */,
 				173D375668903F2066D32B37 /* [CP] Copy Pods Resources */,
+				6FCDA1DCD7A9E6B53B03E513 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -354,24 +354,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Transito/Pods-Transito-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1BBB4ED0358372F1A8DFC4B2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Transito/Pods-Transito-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Transito/Pods-Transito-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Transito/Pods-Transito-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4FEC1C870AEC474426F2F3C9 /* [CP] Embed Pods Frameworks */ = {
+		5C016110FDA5E34F48DAA707 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -386,6 +369,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Transito-TransitoTests/Pods-Transito-TransitoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FCDA1DCD7A9E6B53B03E513 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Transito/Pods-Transito-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Transito/Pods-Transito-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Transito/Pods-Transito-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7117A77A8CB7ECFE70A7E78E /* [CP] Copy Pods Resources */ = {

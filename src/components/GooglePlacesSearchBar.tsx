@@ -27,7 +27,7 @@ const index = ({searchBarRef, onResultPress}: Props) => {
           left: MARGIN_SIZE,
           right: MARGIN_SIZE,
         },
-        textInput: {flex: 1},
+        textInput: {flex: 1, fontFamily: 'NeoSansPro-Bold'},
       }}
       ref={searchBarRef}
       placeholder="Buscar Dirección"
