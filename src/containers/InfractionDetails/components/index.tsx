@@ -5,3 +5,4 @@ export {default as Driverdetails} from './Driverdetails';
 export {default as TrafficRegulationsDetails} from './TrafficRegulationsDetails';
 export {default as CraneDragDetails} from './CraneDragDetails';
 export {default as PaymentDetails} from './PaymentDetails';
+export {default as Signature} from './Signature';

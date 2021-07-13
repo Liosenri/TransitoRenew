@@ -1,19 +1,13 @@
-import React, {useState} from 'react';
+import React, {RefObject, useRef, useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ActivityIndicator,
   Image,
-  View,
-  Switch,
+  TextInput,
 } from 'react-native';
 import {MARGIN_SIZE, MEDIUM_MARGIN_SIZE, PRIMARY_COLOR} from '@/constants';
-import {
-  CustomButton,
-  CustomTextInput,
-  ErrorText,
-  CustomText,
-} from '@/components';
+import {CustomButton, CustomTextInput, ErrorText} from '@/components';
 import {useDispatch, useSelector} from 'react-redux';
 import {signInWithEmailAndPasswordAction} from '@/store/Auth/AuthActions';
 import {StoreStateType} from '@/store';
@@ -23,7 +17,8 @@ interface Props {}
 const Login = ({}: Props) => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
+
+  const passwordInputRef: RefObject<TextInput> = useRef(null);
 
   const {loading, errorDescription} = useSelector(
     (state: StoreStateType) => state.AuthReducer,
@@ -31,8 +26,11 @@ const Login = ({}: Props) => {
 
   const dispatch = useDispatch();
 
-  const onSignin = () =>
-    dispatch(signInWithEmailAndPasswordAction('lhernandez', 'RPvfcdydYX'));
+  const onSignin = () => {
+    if (password.length && email.length) {
+      dispatch(signInWithEmailAndPasswordAction(email, password));
+    }
+  };
 
   const button = loading ? (
     <ActivityIndicator style={styles.textInput} color={PRIMARY_COLOR} />
@@ -56,6 +54,7 @@ const Login = ({}: Props) => {
         onChangeText={setEmail}
         placeholder="Usuario"
         style={styles.textInput}
+        onSubmitEditing={() => passwordInputRef.current?.focus()}
       />
       <CustomTextInput
         value={password}
@@ -63,15 +62,12 @@ const Login = ({}: Props) => {
         placeholder="Contraseña"
         secureTextEntry
         style={styles.textInput}
+        reference={passwordInputRef}
       />
       {button}
       {errorDescription && (
         <ErrorText style={styles.textInput} text={errorDescription} />
       )}
-      <View style={styles.rememberMe}>
-        <CustomText text="Recordarme" />
-        <Switch value={rememberMe} onValueChange={setRememberMe} />
-      </View>
     </SafeAreaView>
   );
 };

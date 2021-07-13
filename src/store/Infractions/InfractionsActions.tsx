@@ -13,6 +13,8 @@ import {
 } from './InfractionsActionTypes';
 import {InfractionType} from '@/constants/types';
 import {createRequestPayLoadFromState} from '@/utils/forms';
+import {extractbase64FromSignatureString} from '~/src/utils/image';
+import {saveBase64AsImage} from '~/src/utils/fs';
 
 export const fetchInfractionsAction = (): InfractionsActionTypes => ({
   type: FETCH_INFRACTIONS,
@@ -32,24 +34,21 @@ export const fetchInfractionsFailAction = (
   payload: errorDescription,
 });
 
-export const fetchUserInfractionsAction = (): ThunkAction<
-  void,
-  StoreStateType,
-  unknown,
-  Action<string>
-> => async (dispatch, getState) => {
-  dispatch(fetchInfractionsAction());
-  const credentials = getState().AuthReducer.credentials;
-  if (credentials) {
-    const {token, uuIdUser} = credentials;
-    try {
-      const infractions = await fetchInfractions(token, uuIdUser);
-      return dispatch(fetchInfractionsSuccessAction(infractions));
-    } catch (error) {
-      return dispatch(fetchInfractionsFailAction(error.message));
+export const fetchUserInfractionsAction =
+  (): ThunkAction<void, StoreStateType, unknown, Action<string>> =>
+  async (dispatch, getState) => {
+    dispatch(fetchInfractionsAction());
+    const credentials = getState().AuthReducer.credentials;
+    if (credentials) {
+      const {token, uuIdUser} = credentials;
+      try {
+        const infractions = await fetchInfractions(token, uuIdUser);
+        return dispatch(fetchInfractionsSuccessAction(infractions));
+      } catch (error) {
+        return dispatch(fetchInfractionsFailAction(error.message));
+      }
     }
-  }
-};
+  };
 
 export const createInfractionSuccessAction = (
   folio: string,
@@ -65,26 +64,26 @@ export const createInfractionFailAction = (
   payload: errorDescription,
 });
 
-export const createInfractionAction = (): // creationDate: Date,
-// signatureBase64: string,
-ThunkAction<void, StoreStateType, unknown, Action<string>> => async (
-  dispatch,
-  getState,
-) => {
-  dispatch({
-    type: CREATE_INFRACTION,
-  });
-  const credentials = getState().AuthReducer.credentials;
-  const creationDate: Date = new Date();
-  const body = createRequestPayLoadFromState(getState(), creationDate);
+export const createInfractionAction =
+  (
+    imageData: string,
+  ): ThunkAction<void, StoreStateType, unknown, Action<string>> =>
+  async (dispatch, getState) => {
+    dispatch({
+      type: CREATE_INFRACTION,
+    });
+    const credentials = getState().AuthReducer.credentials;
+    const creationDate: Date = new Date();
+    const body = createRequestPayLoadFromState(getState(), creationDate);
 
-  if (credentials) {
-    const {token} = credentials;
-    try {
-      const folio = await crateInfraction(token, body);
-      return dispatch(createInfractionSuccessAction(folio));
-    } catch (error) {
-      return dispatch(createInfractionFailAction(error));
+    if (credentials) {
+      const {token} = credentials;
+      try {
+        const folio = await crateInfraction(token, body);
+        await saveBase64AsImage(imageData, folio);
+        return dispatch(createInfractionSuccessAction(folio));
+      } catch (error) {
+        return dispatch(createInfractionFailAction(error));
+      }
     }
-  }
-};
+  };

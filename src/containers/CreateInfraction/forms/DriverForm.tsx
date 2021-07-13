@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet} from 'react-native';
+import React, {RefObject, useEffect, useRef, useState} from 'react';
+import {StyleSheet, TextInput} from 'react-native';
 import {DriverFormType} from '@/constants/types';
 import {DriverFormFields} from '@/constants/forms';
-import {generateFormInput, validateFormRequiredValues} from '@/utils/forms';
-import {ExpandableView, FormWrapper} from '@/components';
+import {validateFormRequiredValues} from '@/utils/forms';
+import {CustomTextInput, ExpandableView, FormWrapper} from '@/components';
 import _ from 'lodash';
 import {useDispatch, useSelector} from 'react-redux';
 import {StoreStateType} from '@/store';
@@ -28,6 +28,16 @@ const DriverForm = ({onContinue}: Props) => {
     place: '',
     hasLicense: false,
   });
+
+  const addressRef: RefObject<TextInput> = useRef(null);
+  const lastNameRef: RefObject<TextInput> = useRef(null);
+  const licenseNumberRef: RefObject<TextInput> = useRef(null);
+  const nameRef: RefObject<TextInput> = useRef(null);
+  const suburbRef: RefObject<TextInput> = useRef(null);
+  const surNameRef: RefObject<TextInput> = useRef(null);
+  const townRef: RefObject<TextInput> = useRef(null);
+  const zipCodeRef: RefObject<TextInput> = useRef(null);
+  const placeRef: RefObject<TextInput> = useRef(null);
 
   const storeForm = useSelector(
     (state: StoreStateType) => state.InfractionFormReducer.driverForm,
@@ -65,28 +75,103 @@ const DriverForm = ({onContinue}: Props) => {
         style={styles.verticalSpace}
         title={DriverFormFields.hasLicense.label}
         onExpand={hasLicense => setFormState({...formState, hasLicense})}>
-        {generateFormInput<keyof DriverFormType>(
-          [DriverFormFields.licenseNumber],
-          formState,
-          handleOnTextInputChange,
-          styles.verticalSpace,
-        )}
+        <CustomTextInput
+          label={DriverFormFields.licenseNumber.label}
+          value={formState.licenseNumber}
+          onChangeText={text => handleOnTextInputChange(text, 'licenseNumber')}
+          placeholder={DriverFormFields.licenseNumber.label}
+          style={styles.verticalSpace}
+          reference={licenseNumberRef}
+          onSubmitEditing={() => lastNameRef.current?.focus()}
+          blurOnSubmit={false}
+          returnKeyType="next"
+        />
       </ExpandableView>
-      {generateFormInput<keyof DriverFormType>(
-        [
-          DriverFormFields.lastName,
-          DriverFormFields.surName,
-          DriverFormFields.name,
-          DriverFormFields.address,
-          DriverFormFields.zipCode,
-          DriverFormFields.suburb,
-          DriverFormFields.town,
-          DriverFormFields.place,
-        ],
-        formState,
-        handleOnTextInputChange,
-        styles.verticalSpace,
-      )}
+      <CustomTextInput
+        label={DriverFormFields.lastName.label}
+        value={formState.lastName}
+        onChangeText={text => handleOnTextInputChange(text, 'lastName')}
+        placeholder={DriverFormFields.lastName.label}
+        style={styles.verticalSpace}
+        reference={lastNameRef}
+        onSubmitEditing={() => surNameRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={DriverFormFields.surName.label}
+        value={formState.surName}
+        onChangeText={text => handleOnTextInputChange(text, 'surName')}
+        placeholder={DriverFormFields.surName.label}
+        style={styles.verticalSpace}
+        reference={surNameRef}
+        onSubmitEditing={() => nameRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={DriverFormFields.name.label}
+        value={formState.name}
+        onChangeText={text => handleOnTextInputChange(text, 'name')}
+        placeholder={DriverFormFields.name.label}
+        style={styles.verticalSpace}
+        reference={nameRef}
+        onSubmitEditing={() => addressRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={DriverFormFields.address.label}
+        value={formState.address}
+        onChangeText={text => handleOnTextInputChange(text, 'address')}
+        placeholder={DriverFormFields.address.label}
+        style={styles.verticalSpace}
+        reference={addressRef}
+        onSubmitEditing={() => zipCodeRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={DriverFormFields.zipCode.label}
+        value={formState.zipCode}
+        onChangeText={text => handleOnTextInputChange(text, 'zipCode')}
+        placeholder={DriverFormFields.zipCode.label}
+        style={styles.verticalSpace}
+        reference={zipCodeRef}
+        onSubmitEditing={() => suburbRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={DriverFormFields.suburb.label}
+        value={formState.suburb}
+        onChangeText={text => handleOnTextInputChange(text, 'suburb')}
+        placeholder={DriverFormFields.suburb.label}
+        style={styles.verticalSpace}
+        reference={suburbRef}
+        onSubmitEditing={() => townRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={DriverFormFields.town.label}
+        value={formState.town}
+        onChangeText={text => handleOnTextInputChange(text, 'town')}
+        placeholder={DriverFormFields.town.label}
+        style={styles.verticalSpace}
+        reference={townRef}
+        onSubmitEditing={() => placeRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={DriverFormFields.place.label}
+        value={formState.place}
+        onChangeText={text => handleOnTextInputChange(text, 'place')}
+        placeholder={DriverFormFields.place.label}
+        style={styles.verticalSpace}
+        reference={placeRef}
+      />
     </FormWrapper>
   );
 };

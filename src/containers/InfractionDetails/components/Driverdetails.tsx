@@ -35,5 +35,5 @@ const CarDetails = ({
 export default CarDetails;
 
 const styles = StyleSheet.create({
-  container: {marginBottom: MARGIN_SIZE},
+  container: {marginBottom: MARGIN_SIZE, flex: 1},
 });

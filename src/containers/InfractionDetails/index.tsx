@@ -15,6 +15,7 @@ import {
   GeneralDetails,
   LocationDetails,
   PaymentDetails,
+  Signature,
   TrafficRegulationsDetails,
 } from './components';
 import {ErrorScreen, FloatingButton, LoadingScreen} from '@/components';
@@ -85,6 +86,7 @@ const InfractionDetails = ({
             {details.ceroFilasResponse?.multa && (
               <PaymentDetails paymentInfo={details.ceroFilasResponse.multa} />
             )}
+            {<Signature folio={folio} />}
           </View>
         )}
       </ScrollView>

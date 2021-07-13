@@ -30,7 +30,11 @@ const TrafficRegulationsList = ({regulations}: Props) => {
           .toLowerCase()
           .includes(query.toLocaleLowerCase());
 
-        return containsArticleKey || containsDescription;
+        const containsArticle = regulation.articulo
+          .toLowerCase()
+          .includes(query.toLocaleLowerCase());
+
+        return containsArticleKey || containsDescription || containsArticle;
       });
       setFilteredRegulations(result);
     }

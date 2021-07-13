@@ -97,7 +97,7 @@ const SignatureForm = ({onBack, onContinue}: Props) => {
 
       <NextBackButtonsView
         onBack={onBack}
-        onContinue={() => dispatch(createInfractionAction())}
+        onContinue={() => dispatch(createInfractionAction(signatureData))}
         nextButtonTitle="Crear multa"
         nextButtonDisabled={!signatureData.length}
       />

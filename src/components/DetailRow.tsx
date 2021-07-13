@@ -15,7 +15,9 @@ const DetailRow = ({title, detail}: Props) => {
   return (
     <View style={styles.container}>
       <CustomText textSize="small" style={styles.text} text={title} />
-      <CustomText textSize="small" style={styles.text} text={detail} />
+      <View style={styles.detailsContainer}>
+        <CustomText textSize="small" style={styles.text} text={detail} />
+      </View>
     </View>
   );
 };
@@ -31,5 +33,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  detailsContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
   },
 });

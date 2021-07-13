@@ -1,6 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet} from 'react-native';
-import {ExpandableView, FormWrapper, CustomPicker} from '@/components';
+import React, {RefObject, useEffect, useRef, useState} from 'react';
+import {StyleSheet, TextInput} from 'react-native';
+import {
+  ExpandableView,
+  FormWrapper,
+  CustomPicker,
+  CustomTextInput,
+} from '@/components';
 import {CarFormType, CarTypeUseOptions} from '@/constants/types';
 import {CarFormFields} from '@/constants/forms';
 import {generateFormInput, validateFormRequiredValues} from '@/utils/forms';
@@ -36,6 +41,16 @@ const DriverForm = ({onContinue, onBack}: Props) => {
     hastEnvironmentalVerification: false,
   });
 
+  const brandRef: RefObject<TextInput> = useRef(null);
+  const colorNameRef: RefObject<TextInput> = useRef(null);
+  const lineNumberRef: RefObject<TextInput> = useRef(null);
+  const modelRef: RefObject<TextInput> = useRef(null);
+  const platesRef: RefObject<TextInput> = useRef(null);
+  const serialNumberRef: RefObject<TextInput> = useRef(null);
+  const typeRef: RefObject<TextInput> = useRef(null);
+  const insuranceCompanyRef: RefObject<TextInput> = useRef(null);
+  const craneDragCompanyRef: RefObject<TextInput> = useRef(null);
+
   const storeForm = useSelector(
     (state: StoreStateType) => state.InfractionFormReducer.carForm,
   );
@@ -67,20 +82,80 @@ const DriverForm = ({onContinue, onBack}: Props) => {
 
   return (
     <FormWrapper onBack={onBack} onContinue={handleOnContinueButtonPress}>
-      {generateFormInput<keyof CarFormType>(
-        [
-          CarFormFields.plates,
-          CarFormFields.brand,
-          CarFormFields.model,
-          CarFormFields.type,
-          CarFormFields.line,
-          CarFormFields.color,
-          CarFormFields.serialNumber,
-        ],
-        formState,
-        handleOnTextInputChange,
-        styles.verticalSpacing,
-      )}
+      <CustomTextInput
+        label={CarFormFields.plates.label}
+        value={formState.plates}
+        onChangeText={text => handleOnTextInputChange(text, 'plates')}
+        placeholder={CarFormFields.plates.label}
+        style={styles.verticalSpacing}
+        reference={platesRef}
+        onSubmitEditing={() => brandRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={CarFormFields.brand.label}
+        value={formState.brand}
+        onChangeText={text => handleOnTextInputChange(text, 'brand')}
+        placeholder={CarFormFields.brand.label}
+        style={styles.verticalSpacing}
+        reference={brandRef}
+        onSubmitEditing={() => modelRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={CarFormFields.model.label}
+        value={formState.model}
+        onChangeText={text => handleOnTextInputChange(text, 'model')}
+        placeholder={CarFormFields.model.label}
+        style={styles.verticalSpacing}
+        reference={modelRef}
+        onSubmitEditing={() => typeRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={CarFormFields.type.label}
+        value={formState.type}
+        onChangeText={text => handleOnTextInputChange(text, 'type')}
+        placeholder={CarFormFields.type.label}
+        style={styles.verticalSpacing}
+        reference={typeRef}
+        onSubmitEditing={() => lineNumberRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={CarFormFields.line.label}
+        value={formState.line}
+        onChangeText={text => handleOnTextInputChange(text, 'line')}
+        placeholder={CarFormFields.line.label}
+        style={styles.verticalSpacing}
+        reference={lineNumberRef}
+        onSubmitEditing={() => colorNameRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={CarFormFields.color.label}
+        value={formState.color}
+        onChangeText={text => handleOnTextInputChange(text, 'color')}
+        placeholder={CarFormFields.color.label}
+        style={styles.verticalSpacing}
+        reference={colorNameRef}
+        onSubmitEditing={() => serialNumberRef.current?.focus()}
+        blurOnSubmit={false}
+        returnKeyType="next"
+      />
+      <CustomTextInput
+        label={CarFormFields.serialNumber.label}
+        value={formState.serialNumber}
+        onChangeText={text => handleOnTextInputChange(text, 'serialNumber')}
+        placeholder={CarFormFields.serialNumber.label}
+        style={styles.verticalSpacing}
+        reference={serialNumberRef}
+      />
       <ExpandableView
         style={styles.verticalSpacing}
         expanded={formState.hasInsuranceCompany}
@@ -88,13 +163,28 @@ const DriverForm = ({onContinue, onBack}: Props) => {
           setFormState({...formState, hasInsuranceCompany})
         }
         title={CarFormFields.hasInsuranceCompany.label}>
-        {generateFormInput<keyof CarFormType>(
-          [CarFormFields.insurancePolicyNumber, CarFormFields.insuranceCompany],
-          formState,
-          handleOnTextInputChange,
-
-          styles.verticalSpacing,
-        )}
+        <CustomTextInput
+          label={CarFormFields.insurancePolicyNumber.label}
+          value={formState.insurancePolicyNumber}
+          onChangeText={text =>
+            handleOnTextInputChange(text, 'insurancePolicyNumber')
+          }
+          placeholder={CarFormFields.insurancePolicyNumber.label}
+          style={styles.verticalSpacing}
+          onSubmitEditing={() => insuranceCompanyRef.current?.focus()}
+          returnKeyType="next"
+          blurOnSubmit={false}
+        />
+        <CustomTextInput
+          label={CarFormFields.insuranceCompany.label}
+          value={formState.insuranceCompany}
+          onChangeText={text =>
+            handleOnTextInputChange(text, 'insuranceCompany')
+          }
+          placeholder={CarFormFields.insuranceCompany.label}
+          style={styles.verticalSpacing}
+          reference={insuranceCompanyRef}
+        />
       </ExpandableView>
       <ExpandableView
         style={styles.verticalSpacing}
@@ -123,13 +213,26 @@ const DriverForm = ({onContinue, onBack}: Props) => {
         title={CarFormFields.craneDrag.label}
         expanded={formState.craneDrag}
         onExpand={craneDrag => setFormState({...formState, craneDrag})}>
-        {generateFormInput<keyof CarFormType>(
-          [CarFormFields.stockNumber, CarFormFields.craneDragCompany],
-          formState,
-          handleOnTextInputChange,
-
-          styles.verticalSpacing,
-        )}
+        <CustomTextInput
+          label={CarFormFields.stockNumber.label}
+          value={formState.stockNumber}
+          onChangeText={text => handleOnTextInputChange(text, 'stockNumber')}
+          placeholder={CarFormFields.stockNumber.label}
+          style={styles.verticalSpacing}
+          onSubmitEditing={() => craneDragCompanyRef.current?.focus()}
+          blurOnSubmit={false}
+          returnKeyType="next"
+        />
+        <CustomTextInput
+          label={CarFormFields.craneDragCompany.label}
+          value={formState.craneDragCompany}
+          onChangeText={text =>
+            handleOnTextInputChange(text, 'craneDragCompany')
+          }
+          placeholder={CarFormFields.craneDragCompany.label}
+          style={styles.verticalSpacing}
+          reference={craneDragCompanyRef}
+        />
       </ExpandableView>
     </FormWrapper>
   );

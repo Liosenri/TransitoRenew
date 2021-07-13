@@ -26,3 +26,10 @@ export const folioSignatureExists = async (folio: string) =>
 
 export const getFolioSignatureUri = (folio: string) =>
   'file:///' + RNFS.DocumentDirectoryPath + '/' + folio + '.png';
+
+export const saveBase64AsImage = (base64: string, fileName: string) =>
+  RNFS.writeFile(
+    RNFS.DocumentDirectoryPath + '/' + fileName + '.png',
+    base64,
+    'base64',
+  );

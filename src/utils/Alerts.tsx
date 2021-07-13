@@ -3,7 +3,7 @@ import {Alert} from 'react-native';
 export const createInvalidFormAlert = (fields: (string | undefined)[] = []) =>
   Alert.alert(
     'Datos inválidos',
-    `Es necesario llenar los siguientes campos para continuar : ${fields.concat(
+    `Es necesario llenar los siguientes campos para continuar : ${fields.join(
       ',',
     )}`,
     [{text: 'OK', onPress: () => console.log('OK Pressed')}],

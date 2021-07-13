@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {RefObject, useState} from 'react';
 import {
   View,
   TextInput,
@@ -10,6 +10,7 @@ import {
 import {MEDIUM_MARGIN_SIZE, PRIMARY_COLOR} from '@/constants';
 import {scale} from '@/utils/ui';
 import {CustomText} from '@/components';
+import {ReturnKeyType} from 'react-native';
 
 interface Props {
   label?: string;
@@ -24,6 +25,10 @@ interface Props {
   secureTextEntry?: boolean;
   textType?: 'regular' | 'bold' | 'light';
   textSize?: 'small' | 'medium' | 'large';
+  reference?: RefObject<TextInput>;
+  onSubmitEditing?: () => void;
+  returnKeyType?: ReturnKeyType;
+  blurOnSubmit?: boolean;
 }
 
 const CustomTextInput = ({
@@ -38,6 +43,10 @@ const CustomTextInput = ({
   secureTextEntry,
   textType = 'regular',
   textSize = 'medium',
+  reference,
+  onSubmitEditing,
+  returnKeyType = 'done',
+  blurOnSubmit = true,
 }: Props) => {
   const [focused, setFocused] = useState(false);
   let customStyle = {...styles[textType], ...styles[textSize]};
@@ -68,6 +77,10 @@ const CustomTextInput = ({
           placeholder={placeholder}
           onBlur={hanldeOnBlur}
           onFocus={handleOnFocus}
+          ref={reference}
+          onSubmitEditing={onSubmitEditing}
+          returnKeyType={returnKeyType}
+          blurOnSubmit={blurOnSubmit}
         />
       </View>
     </View>
